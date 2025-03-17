@@ -19,10 +19,17 @@ pub struct Post {
 }
 
 impl UserProfile {
+
     pub fn new() -> Self {
         UserProfile {
             data_len: 0,
             followers: vec![]
         }
     }
+
+    pub fn follow(&mut self, follower: Pubkey) {
+        self.followers.push(follower);
+        self.data_len = self.followers.len() as u16;
+    }
+
 }

@@ -4,7 +4,7 @@ mod state;
 mod error;
 
 use solana_program::account_info::AccountInfo;
-use solana_program::entrypoint;
+use solana_program::{entrypoint, msg};
 use solana_program::entrypoint::ProgramResult;
 use solana_program::pubkey::Pubkey;
 use crate::processor::Processor;
@@ -16,5 +16,6 @@ fn process_instruction(
     _accounts: &[AccountInfo],
     _instruction_data: &[u8],
 ) -> ProgramResult {
+    msg!("_instruction_data: {:?}", _instruction_data);
     Processor::process_instruction(program_id, _accounts, _instruction_data)
 }
