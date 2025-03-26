@@ -16,6 +16,5 @@ fn process_instruction(
     _accounts: &[AccountInfo],
     _instruction_data: &[u8],
 ) -> ProgramResult {
-    msg!("_instruction_data: {:?}", _instruction_data);
     Processor::process_instruction(program_id, _accounts, _instruction_data)
 }

@@ -30,17 +30,17 @@ impl Processor {
         let social_instruction = SocialInstruction::try_from_slice(instruction_data)?;
         msg!("social instruction: {:?}", social_instruction);
         match social_instruction {
-            SocialInstruction::Init{seed_type} => {
+            SocialInstruction::Init(seed_type) => {
                 Self::init(program_id, accounts, seed_type)
             }
             SocialInstruction::Follow(user) => {
                 Self::follow(accounts, user)
             }
             SocialInstruction::Unfollow(user) => {
-                Self::query_followers(accounts)
+                Ok(())
             }
             SocialInstruction::QueryFollows => {
-                Ok(())
+                Self::query_followers(accounts)
             }
             SocialInstruction::Post(user) => {
                 Ok(())
